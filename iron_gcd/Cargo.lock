@@ -130,7 +130,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "iron-gcd"
+name = "iron_gcd"
 version = "0.1.0"
 dependencies = [
  "iron",

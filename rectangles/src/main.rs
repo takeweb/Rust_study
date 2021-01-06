@@ -1,8 +1,8 @@
 
 #[derive(Debug)]
 struct Reactangle {
-    width: u32,
-    height: u32,
+    width: u32,     // 幅
+    height: u32,    // 高さ
 }
 
 impl Reactangle {
