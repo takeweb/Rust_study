@@ -48,6 +48,15 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "jpholiday",
+ "my_lib",
+]
+
+[[package]]
+name = "my_lib"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "jpholiday",
 ]
 
 [[package]]

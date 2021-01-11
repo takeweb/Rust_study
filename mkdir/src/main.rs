@@ -2,7 +2,7 @@ use std::fs;
 use std::path::Path;
 use chrono::{Local, DateTime, Datelike};
 use std::env;
-mod date_util;
+use my_lib::date_util;
 
 fn main() {
     let year: i32;

@@ -45,15 +45,15 @@ pub fn get_days_from_ym(year: i32, month: u32) -> u32 {
     .num_days()).unwrap()
 }
 
-// pub fn is_leap(year: u32) -> bool {
-//     let rtn: bool;
-//     if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 {
-//         rtn = true;            
-//     } else {
-//         rtn = false;
-//     }
-//     rtn
-// }
+pub fn is_leap(year: u32) -> bool {
+    let rtn: bool;
+    if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 {
+        rtn = true;            
+    } else {
+        rtn = false;
+    }
+    rtn
+}
 
 #[test]
 fn test_get_days_from_ym() {
@@ -63,10 +63,15 @@ fn test_get_days_from_ym() {
     assert_eq!(get_days_from_ym(2021, 3), 31);
 }
 
-// #[test]
-// fn test_is_leap() {
-//     assert!(is_leap(2000) == true);
-//     assert!(is_leap(2100) == false);
-//     assert!(is_leap(2019) == false);
-//     assert!(is_leap(2020) == true);
-// }
+#[test]
+fn test_is_leap() {
+    assert!(is_leap(2000) == true);
+    assert!(is_leap(2100) == false);
+    assert!(is_leap(2019) == false);
+    assert!(is_leap(2020) == true);
+}
+
+#[test]
+fn it_works() {
+    assert_eq!(2 + 2, 4);
+}
