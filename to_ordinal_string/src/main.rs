@@ -11,5 +11,6 @@ fn to_ordinal_string(n: usize) -> String {
         3 => "rd",
         _ => "th",
     };
-    format!("{}{}", n, s)
+    // format!("{0: <02}{1}", n, s)
+    format!("{:<02}{}", n, s)
 }
