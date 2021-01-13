@@ -8,5 +8,5 @@ edition = "2018"
 
 [dependencies]
 chrono = "0.4.19"
-jpholiday = "0.1.4"
+dotenv = "0.15.0"
 my_lib = { path = "../my_lib" }

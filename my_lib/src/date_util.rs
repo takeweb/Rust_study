@@ -20,8 +20,8 @@ impl<'a> MyHoliday<'a> {
     }
     pub fn is_bizday(&mut self, year: i32, month: u32, day: u32) -> bool {
         let mut bizday_flg = !self.jpholiday.is_holiday(NaiveDate::from_ymd(year, month, day).borrow());
-        for el in &self.myreg {
-            if *el == NaiveDate::from_ymd(year, month, day) {
+        for holiday in &self.myreg {
+            if *holiday == NaiveDate::from_ymd(year, month, day) {
                 bizday_flg = false;
             }
         }
