@@ -2,6 +2,7 @@ use std::borrow::Borrow;
 use std::convert::TryFrom;
 use chrono::{NaiveDate};
 use jpholiday::jpholiday::JPHoliday;
+use super::util_file;
 
 pub struct MyHoliday<'a> {
     jpholiday: JPHoliday<'a>,
@@ -9,13 +10,17 @@ pub struct MyHoliday<'a> {
 }
 
 impl<'a> MyHoliday<'a> {
-    pub fn new() -> Self {
+    pub fn new(hol_path: &str) -> Self {
+        let datas = util_file::get_contents(hol_path).ok().unwrap();
+        let mut naive_dates = Vec::new();
+        for data in datas {
+            let v: Vec<&str> = data.split('-').collect();
+            naive_dates.push(NaiveDate::from_ymd(*&v[0].parse().unwrap(), *&v[1].parse().unwrap(), *&v[2].parse().unwrap()));
+        }
+        
         MyHoliday {
-            jpholiday: JPHoliday::new(), 
-            myreg: vec![
-                NaiveDate::from_ymd(2021, 1, 2), 
-                NaiveDate::from_ymd(2021, 1, 3),
-            ]
+            jpholiday: JPHoliday::new(),
+            myreg: naive_dates
         }
     }
     pub fn is_bizday(&mut self, year: i32, month: u32, day: u32) -> bool {
@@ -74,4 +79,10 @@ fn test_is_leap() {
 #[test]
 fn it_works() {
     assert_eq!(2 + 2, 4);
+    // let datas = get_contents().ok().unwrap();
+    // for data in datas {
+    //     // println!("{}", data);
+    //     let v: Vec<&str> = data.split('-').collect();
+    //     println!("{}", format!("{}{:02}{:02}", &v[0], &v[1], &v[2]));
+    // }
 }

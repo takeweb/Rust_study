@@ -2,7 +2,7 @@ use std::fs;
 use std::path::Path;
 use chrono::{Local, DateTime, Datelike};
 use std::env;
-use my_lib::date_util;
+use my_lib::util_date;
 use dotenv::dotenv;
 
 fn main() {
@@ -29,10 +29,12 @@ fn main() {
     let out_path_list: Vec<&str> = out_path_conf
                                     .split(',')
                                     .collect();
+    let hol_path = env::var("HOL_PATH")
+                            .expect("HOL_PATH is not found");
 
     // 日付ユーティリティから休日をインスタンス化
-    let mut my_holiday = date_util::MyHoliday::new();
-    let max_day = date_util::get_days_from_ym(year, month);
+    let mut my_holiday = util_date::MyHoliday::new(&hol_path);
+    let max_day = util_date::get_days_from_ym(year, month);
 
     // 出力先ディレクトリ分繰り返し
     for out_path in out_path_list {
