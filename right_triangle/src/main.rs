@@ -18,7 +18,6 @@ trait GeoCalculator {
     fn length(&self) -> f64;
 }
 
-
 #[derive(Debug)]
 // 直角三角形の構造体
 struct RightTriangle {
@@ -59,6 +58,7 @@ impl GeoCalculator for Reactangle {
     }
 }
 
+// fn printval<T: GeoCalculator>(poly: &T) {
 fn printval(poly: &dyn GeoCalculator) {
     //println!("poly is {:#?}", poly);
     println!("{}", poly.area());
