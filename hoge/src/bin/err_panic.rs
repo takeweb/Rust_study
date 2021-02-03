@@ -1,4 +1,4 @@
-fn get_init_from_file() -> i32 {
+fn get_int_from_file() -> i32 {
     let path = "number.txt";
 
     let num_str = std::fs::read_to_string(path).expect("failed to open the file.");
@@ -11,5 +11,5 @@ fn get_init_from_file() -> i32 {
 }
 
 fn main() {
-    println!("{}", get_init_from_file());
+    println!("{}", get_int_from_file());
 }
