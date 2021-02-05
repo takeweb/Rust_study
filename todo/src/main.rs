@@ -88,7 +88,7 @@ async fn delete_todo (
 
 #[actix_rt::main]
 async fn main() -> Result<(), actix_web::Error> {
-    let manager = SqliteConnectionManager::file("todo.db");
+    let manager = SqliteConnectionManager::file("/db/todo.db");
     let pool = Pool::new(manager).expect("Failed to initialize the connection pool.");
     let conn = pool
         .get()

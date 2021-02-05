@@ -16,6 +16,7 @@ RUN cargo build --release
 # アプリケーションコードをイメージにコピー
 COPY ./src ./src
 COPY ./templates ./templates
+COPY ./db ./db
 
 # 空コードのビルド成果物の内、アプリケーションのもののみを削除する。
 RUN rm -f target/release/deps/todo*
@@ -28,6 +29,8 @@ FROM debian:10.4
 
 # builderイメージからtodoのみをコピーして/usr/local/binに配置する。
 COPY --from=builder /todo/target/release/todo /usr/local/bin/todo
+RUN mkdir db
+COPY ./db ./db
 
 # コンテナ起動時にWebアプリを実行
 CMD ["todo"]
