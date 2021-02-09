@@ -16,7 +16,6 @@ RUN cargo build --release
 # アプリケーションコードをイメージにコピー
 COPY ./src ./src
 COPY ./templates ./templates
-COPY ./db ./db
 
 # 空コードのビルド成果物の内、アプリケーションのもののみを削除する。
 RUN rm -f target/release/deps/todo*
